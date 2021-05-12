@@ -1,4 +1,10 @@
 module.exports = {
+    purge: [
+        './resources/**/*.html',
+        './resources/**/*.vue',
+        './resources/**/*.js',
+        './resources/**/*.blade.php',
+    ],
     theme: {
         extend: {
             colors: {
@@ -108,6 +114,9 @@ module.exports = {
         borderWidth: ['responsive', 'last', 'first'],
         margin: ['responsive', 'last', 'first'],
         padding: ['responsive', 'last', 'first'],
+        backgroundColor: ['responsive', 'hover', 'focus', 'active'],
+        borderColor: ['responsive', 'hover', 'focus', 'active'],
+        textColor: ['responsive', 'hover', 'focus', 'active'],
     },
     plugins: [],
 };

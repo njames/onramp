@@ -14,7 +14,7 @@ In this document we'll try to outline how to get started contributing to Onramp,
 
 In order to contribute you'll want to make a "fork" of this repository.
 
-Click the `fork` button at https://github.com/tightenco/onramp and wait for it to complete.
+Click the `fork` button at https://github.com/tighten/onramp and wait for it to complete.
 
 Once the fork is done, clone your fork to your computer by navigating to a folder you'd like to put the site in, and then replacing `[username]` in this snippet with your GitHub username and running it from the terminal:
 
@@ -29,7 +29,7 @@ Your fork will already be connected to your local repo as the remote named `orig
 Let's add your link to the original Tighten repo by running the following command after navigating to the `onramp` folder in your local repo:
 
 ```bash
-git remote add upstream git@github.com:tightenco/onramp
+git remote add upstream git@github.com:tighten/onramp
 ```
 
 This added a remote named `upstream` that points to Tighten's repo.
@@ -44,7 +44,8 @@ Now you have this set up, run the following commands to install the dependencies
 
 ```bash
 composer install
-npm install
+npm install 
+npm run dev
 ```
 
 Check that the `.env` file exists; if not, copy the `.env.example` to `.env`:
@@ -83,16 +84,16 @@ Using the git remote we set up earlier, we first need to fetch changes that were
 git fetch upstream --prune
 ```
 
-Next, change to your local master branch:
+Next, change to your local main branch:
 
 ```bash
-git checkout master
+git checkout main
 ```
 
 And merge the changes that were made upstream into your local branch.
 
 ```bash
-git merge upstream/master --no-ff
+git merge upstream/main --no-ff
 ```
 
 ## Prepare your pull request

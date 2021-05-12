@@ -4,9 +4,7 @@ namespace App\Providers;
 
 use App\Handlers\Events\SlackSubscriber;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use KgBot\LaravelLocalization\Facades\ExportLocalizations;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 
     /**

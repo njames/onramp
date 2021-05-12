@@ -1,11 +1,11 @@
 <template>
-    <div class="relative inline-block text-left">
+    <div class="relative inline-block text-left" v-click-outside="close">
         <div>
             <slot name="toggle" :toggle="toggle">
                 <span class="text-blue-violet">
                     <button
                         type="button"
-                        class="inline-flex items-center justify-center w-full h-12 text-base font-semibold transition duration-150 ease-in-out focus:outline-none focus:border-white"
+                        class="inline-flex items-center justify-center w-full h-12 text-base font-semibold transition duration-150 ease-in-out focus:outline-none focus:border-white hover:opacity-75 transition ease-in-out duration-150"
                         @click="toggle"
                     >
                         {{ toggleText }}
@@ -22,7 +22,7 @@
         </div>
 
         <transition name="grow">
-            <div v-if="isOpen" class="absolute right-0 z-50 w-56 mt-2 origin-top-right rounded-md shadow-lg">
+            <div v-if="isOpen" class="absolute right-0 z-50 w-32 mt-2 origin-top-right rounded-md shadow-lg">
                 <div class="overflow-hidden bg-white rounded-md shadow-xs">
                     <slot></slot>
                 </div>

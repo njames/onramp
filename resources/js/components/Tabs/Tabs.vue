@@ -42,6 +42,7 @@ export default {
     data() {
         return {
             tabs: [],
+            windowWidth: window.innerWidth,
         }
     },
 
@@ -71,6 +72,8 @@ export default {
             this.tabs.forEach(tab => {
                 tab.isActive = (tab.href == selectedTabHref);
             });
+
+            this.$emit('activeTabUpdated', this.tabs.filter(tab => tab.isActive)[0]);
         },
 
         showAllTabs() {
@@ -86,8 +89,16 @@ export default {
 
             if (window.innerWidth >= 992) {
                 this.showAllTabs();
-            } else {
+                return;
+            }
+            
+            if (window.innerWidth < 992) {
+                if(this.windowWidth === window.innerWidth) {
+                    return;
+                }
+
                 this.setActiveTab(this.tabs[0].href);
+                this.windowWidth = window.innerWidth;
             }
         },
     },

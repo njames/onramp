@@ -31,11 +31,11 @@
                                 @endif
                             </div>
 
-                            <p class="mt-4 text-base text-gray-700 lg:text-lg">{{ $term->getTranslation('description', locale()) }}</p>
+                            <div class="glossary-description mt-4 text-base text-gray-700 lg:text-lg">{!! (new Parsedown)->text($term->getTranslation('description', locale())) !!}</div>
 
-                            @if ($term->resourcesForCurrentSession()->count() > 0)
+                            @if ($term->resourcesForCurrentSession->count() > 0)
                                 <div class="flex flex-col mt-4">
-                                    <span class="text-gray-800">Related resources:</span>
+                                    <span class="text-gray-800">{{ __('Related resources:') }}</span>
                                     @foreach ($term->resourcesForCurrentSession()->get() as $resource)
                                     <span>
                                         {{-- @todo update this to either show first module, all modules, or none if resource unassigned --}}
@@ -53,7 +53,7 @@
 
                             @if ($term->relatedTerms->count() > 0)
                                 <div class="flex items-center mt-4">
-                                    <span class="text-gray-800">Related Terms:</span>
+                                    <span class="text-gray-800">{{ __('Related Terms:') }}</span>
                                     @foreach ($term->relatedTerms as $relatedTerm)
                                     <a class="px-3 ml-2 text-sm font-semibold text-gray-700 bg-gray-400 rounded-full"
                                         href="#{{ $relatedTerm->name }}">#{{ $relatedTerm->name }}</a>
@@ -63,7 +63,7 @@
 
                             @if ($term->relatedTerms->count() > 0)
                                 <div class="flex items-center mt-4">
-                                    <span class="text-gray-800">Related Terms:</span>
+                                    <span class="text-gray-800">{{ __('Related Terms:') }}</span>
                                     @foreach ($term->relatedTerms as $relatedTerm)
                                     <a class="px-3 ml-2 text-sm font-semibold text-gray-700 bg-gray-400 rounded-full"
                                         href="#{{ $relatedTerm->name }}">#{{ $relatedTerm->name }}</a>
@@ -97,3 +97,11 @@
     </div>
 </div>
 @endsection
+
+@push('styles')
+<style>
+    .glossary-description p {
+        margin-bottom: 2em;
+    }
+</style>
+@endpush

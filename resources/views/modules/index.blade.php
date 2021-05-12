@@ -12,6 +12,12 @@
                 {{ __('The tech concepts you should know in order to get a job as a Laravel developer.') }}
             </p>
 
+            @if (auth()->check() && auth()->user()->hasTrack())
+            <div class="mt-6 text-sm text-comet">{!! __('You are on the :track track.', ['track' => '<span class="font-semibold">'.auth()->user()->track->name.'</span>']) !!}
+                <a class="mr-4 ml-2 font-semibold text-indigo-700" href="{{ url_wlocale('preferences') }}">{{ __('Change settings') }}</a>
+            </div>
+            @endif
+
             <picture>
                 <source media="(min-width: 1024px)"
                     srcset="/images/shapes/double-curve-dark-large.svg">
